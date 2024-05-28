@@ -6,7 +6,7 @@ if (!process.env.TOKEN) {
   throw new Error("Токен не предоставлен");
 }
 
-type TContext = EmojiFlavor<Context & SessionFlavor<ISessionData>>;
+export type TContext = EmojiFlavor<Context & SessionFlavor<ISessionData>>;
 
 const initialSessionData = (): ISessionData => {
   return { heroesList: null };

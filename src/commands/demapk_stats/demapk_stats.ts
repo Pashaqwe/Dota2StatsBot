@@ -1,15 +1,12 @@
-import { GrammyError, HttpError } from "grammy";
-import "dotenv/config";
 import {
   getDemapkLastDayMatchesRequest,
   getDemapkOnlyWinLastDayMatchesRequest,
   getHeroesListRequest,
-} from "./api";
-import { IMatch } from "./models/IMatch";
-import { IHero } from "./models/IHero";
-import { bot } from "./config";
+} from "../../api";
+import { TContext } from "../../config";
+import { IHero, IMatch } from "../../models";
 
-bot.command("demapk_stats", async (ctx) => {
+export const demapk_stats = async (ctx: TContext) => {
   if (!process.env.BASE_URL) throw new Error("Не найдена переменная BASE_URL");
 
   try {
@@ -76,18 +73,4 @@ bot.command("demapk_stats", async (ctx) => {
       { parse_mode: "HTML" }
     );
   }
-});
-
-bot.catch(({ ctx, error }) => {
-  console.error(`Ошибка ${ctx.update.update_id}`);
-
-  if (error instanceof GrammyError) {
-    console.error(`Ошибка бота ${error.description}`);
-  } else if (error instanceof HttpError) {
-    console.error(`Ошибка http ${error}`);
-  } else {
-    console.error(`Неизвестная ошибка ${error}`);
-  }
-});
-
-bot.start();
+};
