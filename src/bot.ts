@@ -11,7 +11,7 @@ bot.catch(({ ctx, error }) => {
   if (error instanceof GrammyError) {
     console.error(`Ошибка бота ${error.description}`);
   } else if (error instanceof HttpError) {
-    console.error(`Ошибка http ${error}`);
+    console.error(`Ошибка http ${JSON.stringify(error)}`);
   } else {
     console.error(`Неизвестная ошибка ${error}`);
   }

@@ -1,20 +1,28 @@
-import {
-  getDemapkLastDayMatchesRequest,
-  getDemapkOnlyWinLastDayMatchesRequest,
-  getHeroesListRequest,
-} from "../../api";
+import { getHeroesListRequest, getMatchesRequest } from "../../api";
 import { TContext } from "../../config";
 import { IHero, IMatch } from "../../models";
 
+const PREVIOUS_DAYS_COUNT = "1";
+
 export const demapk_stats = async (ctx: TContext) => {
   if (!process.env.BASE_URL) throw new Error("Не найдена переменная BASE_URL");
+  if (!process.env.DEMAPK_ID)
+    throw new Error("Не найдена переменная DEMAPK_ID");
 
   try {
-    const getDemapkLastDayMatchesResponse =
-      await getDemapkLastDayMatchesRequest();
+    const commonRequestParams = {
+      userId: process.env.DEMAPK_ID,
+      date: PREVIOUS_DAYS_COUNT,
+    };
 
-    const getDemapkOnlyWinLastDayMatchesResponse =
-      await getDemapkOnlyWinLastDayMatchesRequest();
+    const getDemapkLastDayMatchesResponse = await getMatchesRequest(
+      commonRequestParams
+    );
+
+    const getDemapkOnlyWinLastDayMatchesResponse = await getMatchesRequest({
+      ...commonRequestParams,
+      win: "1",
+    });
 
     if (!getDemapkLastDayMatchesResponse.ok) {
       throw new Error(getDemapkLastDayMatchesResponse.statusText);
