@@ -52,7 +52,7 @@ export const demapk_stats = async (ctx: TContext) => {
           `<b>Герой:</b> <i><b>${heroName(hero_id)}</b></i>`,
           `<b>KDA:</b> ` +
             ` ${ctx.emoji`${"crossed_swords"} ` + kills}` +
-            ` ${ctx.emoji`${"skull"}` + deaths} ` +
+            ` ${ctx.emoji`${"skull"} ` + deaths}` +
             ` ${ctx.emoji`${"handshake"} ` + assists}`,
           `<b>Результат:</b> ` +
             `${
