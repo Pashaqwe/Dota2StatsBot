@@ -16,7 +16,7 @@ export const getUserMatchesListMessage = async ({
   try {
     const commonRequestParams = {
       userId: userId,
-      date: date || "1",
+      date: date ?? "1",
     };
 
     const getLastDayMatchesResponse = await getMatchesRequest(
