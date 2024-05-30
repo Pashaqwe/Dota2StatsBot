@@ -1,9 +1,11 @@
 import { GrammyError, HttpError } from "grammy";
 import "dotenv/config";
 import { bot } from "./config";
-import { demapk_stats } from "./commands";
+import { damir_stats, demapk_stats } from "./commands";
 
 bot.command("demapk_stats", async (ctx) => demapk_stats(ctx));
+
+bot.command("damir_stats", async (ctx) => damir_stats(ctx));
 
 bot.catch(({ ctx, error }) => {
   console.error(`Ошибка ${ctx.update.update_id}`);
