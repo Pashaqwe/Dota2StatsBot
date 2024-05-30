@@ -19,4 +19,5 @@ bot.use(emojiParser());
 
 bot.api.setMyCommands([
   { command: "demapk_stats", description: "Матчи Demapk за текущий день" },
+  { command: "damir_stats", description: "Матчи Домы за текущий день" },
 ]);

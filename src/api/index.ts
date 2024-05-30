@@ -1,5 +1,5 @@
 export {
-  getDemapkLastDayMatchesRequest,
-  getDemapkOnlyWinLastDayMatchesRequest,
+  getMatchesRequest,
   getHeroesListRequest,
+  getUserInfoRequest,
 } from "./api.ts";
