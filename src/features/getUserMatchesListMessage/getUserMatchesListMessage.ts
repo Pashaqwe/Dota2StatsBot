@@ -79,13 +79,19 @@ export const getUserMatchesListMessage = async ({
                 ? `${ctx.emoji`${"check_mark_button"}`} Победа`
                 : `${ctx.emoji`${"cross_mark"}`} Поражение`
             }`,
+          `<b>Подробнее:</b> <a href="${
+            "https://www.opendota.com/matches/" + match_id
+          }">Ссылка</a>`,
           "______________________________",
         ];
 
         return messageItems.toString();
       })}`.replace(/,/g, "\n");
 
-    await ctx.reply(message, { parse_mode: "HTML" });
+    await ctx.reply(message, {
+      parse_mode: "HTML",
+      link_preview_options: { is_disabled: true },
+    });
   } catch (error) {
     await ctx.reply(
       `Сервис недоступен, повторите попытку позже\n<tg-spoiler>${error}</tg-spoiler>`,
