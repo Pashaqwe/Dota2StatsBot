@@ -16,3 +16,6 @@ export const getMatchesRequest = async ({
 
 export const getHeroesListRequest = async () =>
   await fetch(`${process.env.BASE_URL}/heroes`);
+
+export const getUserInfoRequest = async ({ userId }: { userId: string }) =>
+  await fetch(`${process.env.BASE_URL}/players/${userId}`);

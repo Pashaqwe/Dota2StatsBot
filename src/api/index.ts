@@ -1,1 +1,5 @@
-export { getMatchesRequest, getHeroesListRequest } from "./api.ts";
+export {
+  getMatchesRequest,
+  getHeroesListRequest,
+  getUserInfoRequest,
+} from "./api.ts";

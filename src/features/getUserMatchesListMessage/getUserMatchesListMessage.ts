@@ -1,5 +1,9 @@
-import { getHeroesListRequest, getMatchesRequest } from "../../api";
-import { IHero, IMatch } from "../../models";
+import {
+  getHeroesListRequest,
+  getMatchesRequest,
+  getUserInfoRequest,
+} from "../../api";
+import { IHero, IMatch, IUserInfo } from "../../models";
 import { IGetUserMatchesListMessage } from "./interfaces";
 
 export const getUserMatchesListMessage = async ({
@@ -15,19 +19,25 @@ export const getUserMatchesListMessage = async ({
       date: date || "1",
     };
 
-    const getDemapkLastDayMatchesResponse = await getMatchesRequest(
+    const getLastDayMatchesResponse = await getMatchesRequest(
       commonRequestParams
     );
 
-    const getDemapkOnlyWinLastDayMatchesResponse = await getMatchesRequest({
+    const getOnlyWinLastDayMatchesResponse = await getMatchesRequest({
       ...commonRequestParams,
       win: "1",
     });
 
-    if (!getDemapkLastDayMatchesResponse.ok) {
-      throw new Error(getDemapkLastDayMatchesResponse.statusText);
-    } else if (!getDemapkOnlyWinLastDayMatchesResponse.ok) {
-      throw new Error(getDemapkOnlyWinLastDayMatchesResponse.statusText);
+    const getUserInfoResponse = await getUserInfoRequest({
+      userId,
+    });
+
+    if (!getLastDayMatchesResponse.ok) {
+      throw new Error(getLastDayMatchesResponse.statusText);
+    } else if (!getOnlyWinLastDayMatchesResponse.ok) {
+      throw new Error(getOnlyWinLastDayMatchesResponse.statusText);
+    } else if (!getUserInfoResponse.ok) {
+      throw new Error(getUserInfoResponse.statusText);
     }
 
     if (!ctx.session.heroesList) {
@@ -41,9 +51,10 @@ export const getUserMatchesListMessage = async ({
       ctx.session.heroesList = heroesList;
     }
 
-    const matches: IMatch[] = await getDemapkLastDayMatchesResponse.json();
-    const winMatches: IMatch[] =
-      await getDemapkOnlyWinLastDayMatchesResponse.json();
+    const matches: IMatch[] = await getLastDayMatchesResponse.json();
+    const winMatches: IMatch[] = await getOnlyWinLastDayMatchesResponse.json();
+    const userInfo: IUserInfo = await getUserInfoResponse.json();
+    const userNickName = userInfo.profile.personaname;
     const heroName = (heroId: number) => {
       if (ctx.session.heroesList) {
         return ctx.session.heroesList.find((hero) => hero.id === heroId)
@@ -54,7 +65,7 @@ export const getUserMatchesListMessage = async ({
       winMatches.map(({ match_id }) => match_id).includes(currentMatchId);
 
     const message =
-      "<b>Результаты игр Demapk за последние 24ч</b> \n\n" +
+      `<b>Результаты игр ${userNickName} за последние 24ч</b> \n\n` +
       `${matches.map(({ hero_id, kills, deaths, assists, match_id }) => {
         const messageItems = [
           `<b>Герой:</b> <i><b>${heroName(hero_id)}</b></i>`,
