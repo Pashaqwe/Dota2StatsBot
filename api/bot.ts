@@ -11,7 +11,6 @@ bot.start();
 
 const app = express();
 app.use(express.json());
-app.use("/api/bot", webhookCallback(bot)); // Убедитесь, что webhookCallback правильно импортирован и используется
-// app.use(express.json()); // Удалено дубликат
+app.use("/api/bot", webhookCallback(bot));
 
 export default app;
