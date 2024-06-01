@@ -12,14 +12,14 @@ const initialSessionData = (): ISessionData => {
   return { heroesList: null };
 };
 
-export const myBot = new Bot<TContext>(process.env.TOKEN);
+export const bot = new Bot<TContext>(process.env.TOKEN);
 
-myBot.use(session({ initial: initialSessionData }));
-myBot.use(emojiParser());
+bot.use(session({ initial: initialSessionData }));
+bot.use(emojiParser());
 
-myBot.api.setMyCommands([
+bot.api.setMyCommands([
   { command: "demapk_stats", description: "Матчи Demapk за текущий день" },
   { command: "damir_stats", description: "Матчи Домы за текущий день" },
 ]);
 
-export const bot = webhookCallback(myBot, "std/http");
+export default webhookCallback(bot, "std/http");
