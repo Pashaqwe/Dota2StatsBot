@@ -1,14 +1,8 @@
 {
   "functions": {
-    "api/bot.ts": {
+    "./api/config/config.ts": {
       "memory": 1024,
       "maxDuration": 10
     }
-  },
-  "builds": [
-    {
-      "src": "./api/config/config.ts",
-      "use": "@vercel/node"
-    }
-  ]
+  }
 }
