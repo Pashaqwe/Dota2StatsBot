@@ -11,4 +11,4 @@ bot.command("start", (ctx) => {
 
 bot.start();
 
-export default webhookCallback(bot, "http");
+export default webhookCallback(bot, "std/http");
