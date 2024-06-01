@@ -1,6 +1,6 @@
 import { webhookCallback } from "grammy";
 import express from "express";
-import { bot } from "../src/config/index.ts";
+import { bot } from "../src";
 
 const app = express();
 app.use(express.json());
