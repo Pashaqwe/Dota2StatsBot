@@ -1,5 +1,5 @@
 import { EmojiFlavor, emojiParser } from "@grammyjs/emoji";
-import { Bot, Context, session, SessionFlavor, webhookCallback } from "grammy";
+import { Bot, Context, session, SessionFlavor } from "grammy";
 import { ISessionData } from "./interfaces";
 
 if (!process.env.TOKEN) {
@@ -21,5 +21,3 @@ bot.api.setMyCommands([
   { command: "demapk_stats", description: "Матчи Demapk за текущий день" },
   { command: "damir_stats", description: "Матчи Домы за текущий день" },
 ]);
-
-export default webhookCallback(bot, "std/http");
