@@ -2,7 +2,7 @@ import {
   getHeroesListRequest,
   getMatchesRequest,
   getUserInfoRequest,
-} from "../../api";
+} from "../../requests";
 import { IHero, IMatch, IUserInfo } from "../../models";
 import { IGetUserMatchesListMessage } from "./interfaces";
 
