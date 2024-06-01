@@ -7,7 +7,10 @@ const handler: Handler = async (event) => {
   bot.handleUpdate(update);
 
   console.log("Received an update from Telegram!", event.body);
-  return { statusCode: 200 };
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Message received" }),
+  };
 };
 
 export { handler };
