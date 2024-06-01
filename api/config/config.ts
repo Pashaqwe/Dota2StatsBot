@@ -1,5 +1,5 @@
 import { EmojiFlavor, emojiParser } from "@grammyjs/emoji";
-import { Bot, Context, session, SessionFlavor } from "grammy";
+import { Bot, Context, session, SessionFlavor, webhookCallback } from "grammy";
 import { ISessionData } from "./interfaces";
 
 if (!process.env.TOKEN) {
@@ -12,12 +12,14 @@ const initialSessionData = (): ISessionData => {
   return { heroesList: null };
 };
 
-export const bot = new Bot<TContext>(process.env.TOKEN);
+export const myBot = new Bot<TContext>(process.env.TOKEN);
 
-bot.use(session({ initial: initialSessionData }));
-bot.use(emojiParser());
+myBot.use(session({ initial: initialSessionData }));
+myBot.use(emojiParser());
 
-bot.api.setMyCommands([
+myBot.api.setMyCommands([
   { command: "demapk_stats", description: "Матчи Demapk за текущий день" },
   { command: "damir_stats", description: "Матчи Домы за текущий день" },
 ]);
+
+export const bot = webhookCallback(myBot, "std/http");
