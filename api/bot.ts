@@ -7,3 +7,5 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/bot", webhookCallback(bot, "std/http"));
+
+export default app;
