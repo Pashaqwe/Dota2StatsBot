@@ -1,6 +1,7 @@
-import { webhookCallback } from "grammy";
+import { Bot, webhookCallback } from "grammy";
 import express from "express";
-import { bot } from "../src";
+
+const bot = new Bot(String(process.env.TOKEN));
 
 const app = express();
 app.use(express.json());
