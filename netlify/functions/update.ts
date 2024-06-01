@@ -1,20 +1,10 @@
 import { Handler } from "@netlify/functions";
+import { bot } from "../../src/config";
 
 const handler: Handler = async (event) => {
-  if (event.body) {
-    const bodyRequest = {
-      chat_id: JSON.parse(event.body).message.chat.id,
-      text: "I got your message!",
-    };
+  const update = event.body;
 
-    await fetch(
-      `https://api.telegram.org/bot${process.env.TOKEN}/sendMessage`,
-      {
-        method: "POST",
-        body: JSON.stringify(bodyRequest),
-      }
-    );
-  }
+  bot.handleUpdate(update);
 
   console.log("Received an update from Telegram!", event.body);
   return { statusCode: 200 };
