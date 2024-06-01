@@ -1,8 +1,8 @@
 {
-  "functions": {
-    "./api/config/config.ts": {
-      "memory": 1024,
-      "maxDuration": 10
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "api/index.ts"
     }
-  }
+  ]
 }
