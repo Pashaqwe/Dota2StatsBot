@@ -7,6 +7,6 @@ import { bot } from "../src";
 const app = express();
 
 app.use(express.json());
-app.use("/api/bot", webhookCallback(bot));
+app.use("/api/index", webhookCallback(bot));
 
 export default app;

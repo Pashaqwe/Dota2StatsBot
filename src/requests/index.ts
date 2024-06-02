@@ -2,4 +2,4 @@ export {
   getMatchesRequest,
   getHeroesListRequest,
   getUserInfoRequest,
-} from "./api";
+} from "./requests";
