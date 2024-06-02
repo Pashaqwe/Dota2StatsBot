@@ -4,7 +4,7 @@
   "main": "api/bot.ts",
   "scripts": {
     "start": "npx nodemon",
-    "build": "npx tsc"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
