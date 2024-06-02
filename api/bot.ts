@@ -1,7 +1,6 @@
-import { Bot, webhookCallback } from "grammy";
+import { webhookCallback } from "grammy";
 import express from "express";
-
-const bot = new Bot("7261527510:AAFIYYCShhudAR0m0InYTZwAhLswVS9zyFw");
+import { bot } from "../src/config";
 
 const app = express();
 app.use(express.json());
