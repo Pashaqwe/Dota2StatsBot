@@ -2,6 +2,7 @@ import { GrammyError, HttpError } from "grammy";
 import "dotenv/config";
 import { bot } from "./config";
 import { damir_stats, demapk_stats } from "./commands";
+import { development, production } from "./utils";
 
 bot.command("demapk_stats", async (ctx) => demapk_stats(ctx));
 
@@ -19,4 +20,4 @@ bot.catch(({ ctx, error }) => {
   }
 });
 
-bot.start();
+process.env.NODE_ENV === "development" ? development(bot) : production(bot);
