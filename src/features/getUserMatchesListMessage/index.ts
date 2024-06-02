@@ -1,1 +1,1 @@
-export { getUserMatchesListMessage } from "./getUserMatchesListMessage.ts";
+export { getUserMatchesListMessage } from "./getUserMatchesListMessage";

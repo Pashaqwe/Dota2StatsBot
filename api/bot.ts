@@ -2,7 +2,7 @@ require("../src/bot");
 
 import { webhookCallback } from "grammy";
 import express from "express";
-import bot from "../src/config/config";
+import { bot } from "../src";
 
 const app = express();
 

@@ -1,1 +1,1 @@
-export { damir_stats } from "./damir_stats.ts";
+export { damir_stats } from "./damir_stats";

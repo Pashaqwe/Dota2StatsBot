@@ -1,2 +1,2 @@
-export { bot } from "./config.ts";
+export { bot } from "./config";
 export type { TContext } from "./config.ts";

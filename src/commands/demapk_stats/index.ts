@@ -1,1 +1,1 @@
-export { demapk_stats } from "./demapk_stats.ts";
+export { demapk_stats } from "./demapk_stats";

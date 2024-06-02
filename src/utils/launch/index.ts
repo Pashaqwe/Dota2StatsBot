@@ -1,1 +1,1 @@
-export { development, production } from "./launch.ts";
+export { development, production } from "./launch";

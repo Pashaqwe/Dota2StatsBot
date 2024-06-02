@@ -1,3 +1,3 @@
-export { IHero } from "./IHero.ts";
-export { IMatch } from "./IMatch.ts";
-export { IUserInfo } from "./IUserInfo.ts";
+export { IHero } from "./IHero";
+export { IMatch } from "./IMatch";
+export { IUserInfo } from "./IUserInfo";
