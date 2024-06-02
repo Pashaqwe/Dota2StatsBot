@@ -5,12 +5,14 @@ const bot = new Bot("7261527510:AAFIYYCShhudAR0m0InYTZwAhLswVS9zyFw");
 
 const app = express();
 app.use(express.json());
+
+// Используйте webhookCallback для обработки входящих обновлений
 app.use("/api/bot", webhookCallback(bot));
 
-bot.command("start", async (ctx) => {
-  await ctx.reply("Hello!");
-});
+// Определите команды для вашего бота
+bot.command("start", (ctx) => ctx.reply("Hello"));
 
-// bot.start();
+// Запустите бота
+bot.start();
 
 export default app;
