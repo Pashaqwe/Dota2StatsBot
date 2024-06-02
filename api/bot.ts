@@ -6,6 +6,6 @@ const app = express();
 app.use(express.json());
 
 // Используйте webhookCallback для обработки входящих обновлений
-app.use("../api/bot.ts", webhookCallback(bot));
+app.use("/api/bot", webhookCallback(bot));
 
 export default app;
