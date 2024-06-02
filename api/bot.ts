@@ -11,6 +11,6 @@ bot.command("start", async (ctx) => {
   await ctx.reply("Hello!");
 });
 
-bot.start();
+// bot.start();
 
 export default app;
