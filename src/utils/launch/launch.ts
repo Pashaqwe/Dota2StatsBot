@@ -14,7 +14,7 @@ export const development = async (bot: Bot<TContext>): Promise<void> => {
 export const production = async (bot: Bot<TContext>): Promise<void> => {
   try {
     await bot.api.setWebhook(
-      `${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api/bot`
+      `${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api/index`
     );
     console.log(`[SERVER] Bot starting webhook`);
   } catch (e) {

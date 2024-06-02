@@ -1,15 +1,14 @@
 {
-  "name": "dota2bot",
+  "name": "dota2statsbot",
   "version": "1.0.0",
   "main": "api/bot.ts",
   "scripts": {
     "start": "npx nodemon",
     "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Pashaqwe",
   "license": "ISC",
-  "description": "",
+  "description": "Бот, который показывает статистику матчей в игре dota 2",
   "dependencies": {
     "@grammyjs/emoji": "^1.2.0",
     "dotenv": "^16.4.5",

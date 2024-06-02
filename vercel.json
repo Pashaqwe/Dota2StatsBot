@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/.*",
-      "dest": "./api/bot.ts"
+      "dest": "./api/index.ts"
     }
   ]
 }
