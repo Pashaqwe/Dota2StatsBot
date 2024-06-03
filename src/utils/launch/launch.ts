@@ -2,7 +2,7 @@ import { Bot } from "grammy";
 import { TContext } from "../../config";
 
 export const development = async (bot: Bot<TContext>): Promise<void> => {
-  console.log(process.env.NODE_ENV, "222222222222222");
+  console.log(process.env.NODE_ENV, "111111111111");
 
   try {
     await bot.api.deleteWebhook();
