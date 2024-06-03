@@ -86,7 +86,12 @@ export const getUserMatchesListMessage = async ({
         ];
 
         return messageItems.toString();
-      })}`.replace(/,/g, "\n");
+      })}`.replace(/,/g, "\n") +
+      "\n\n" +
+      `<b>Итог: </b> ` +
+      `${ctx.emoji`${"check_mark_button"}`} ${winMatches.length}` +
+      " | " +
+      `${ctx.emoji`${"cross_mark"}`} ${matches.length - winMatches.length}`;
 
     await ctx.reply(message, {
       parse_mode: "HTML",
