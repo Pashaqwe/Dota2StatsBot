@@ -25,3 +25,5 @@ bot.catch(({ ctx, error }) => {
 bot.use(composer);
 
 process.env.NODE_ENV === "development" ? development(bot) : production(bot);
+
+export {};
